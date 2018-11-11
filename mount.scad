@@ -2,6 +2,7 @@
 include <machine_measures.scad>;
 include <config.scad>;
 
+
 /**
  * The mount module describes the plane,
  * which all soldering heads must have in order
@@ -19,6 +20,14 @@ module mount()
     hole_size_y = 40 - 2*1.2;
 
     hole_offset_y = 12.5;
+
+    // Vacuum outlet    
+    vacuum_outlet_y = hole_offset_y + hole_size_y/2;
+
+    // Vacuum pipe mount
+    vacuum_pipe_outer_diameter = 3;
+    vacuum_pipe_mount_width = 6;
+    vacuum_pipe_mount_height = vacuum_outlet_y + vacuum_pipe_outer_diameter;
 
     // Side clamps
     clamp_hole_diameter = 3;
@@ -68,6 +77,22 @@ module mount()
                 h=material_z+2*nothing
                 );
         }
+    }
+
+    // Vacuum pipe mount
+    difference()
+    {
+        // The middle suppor
+        translate([-vacuum_pipe_mount_width/2, 0, 0])
+        cube([
+            vacuum_pipe_mount_width,
+            vacuum_pipe_mount_height,
+            material_z
+            ]);
+
+        // A hole for the vacuum pipe
+        translate([0, vacuum_outlet_y, -nothing])
+        cylinder(r=vacuum_pipe_outer_diameter/2, h=material_z+2*nothing);
     }
 }
 
