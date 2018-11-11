@@ -12,13 +12,13 @@ module mount()
 {
     // Base plate
     mount_size_x = 63;
-    mount_size_y = 58;
+    mount_size_y = 57.5;
 
-    // Hot air window
-    hole_size_x = 40;
-    hole_size_y = 40;
+    // Hot air window: 4x4cm - border metal width: 1.2mm
+    hole_size_x = 40 - 2*1.2;
+    hole_size_y = 40 - 2*1.2;
 
-    hole_offset_y = 11;
+    hole_offset_y = 12.5;
 
     // Side clamps
     clamp_hole_diameter = 3;
