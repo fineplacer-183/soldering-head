@@ -77,6 +77,28 @@ module mount()
                 h=material_z+2*nothing
                 );
         }
+
+        // Baseplate to layer screw hole, top left
+        translate([
+            -mount_size_x/2 + baseplate_screw1_x,
+            baseplate_screw1_y,
+            -nothing
+            ])
+        cylinder(
+            r=baseplate_tap_hole_diameter/2,
+            h=material_z + 2*nothing
+            );
+
+        // Baseplate to layer screw hole, bottom right
+        translate([
+            -mount_size_x/2 + baseplate_screw2_x,
+            baseplate_screw2_y,
+            -nothing
+            ])
+        cylinder(
+            r=baseplate_tap_hole_diameter/2,
+            h=material_z + 2*nothing
+            );
     }
 
     // Vacuum pipe mount
